@@ -1,95 +1,236 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的产品推荐站</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>省心好物 · 精选推荐（Amazon Affiliate Template）</title>
+  <meta name="description" content="精选商品测评与推荐 — 亚马逊联盟友好模板。内置商品列表、分类、搜索、SEO 元数据与联盟链接占位符。" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo="> 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
-    header { background: #1a73e8; color: #fff; padding: 20px; text-align: center; }
-    nav { background: #fff; padding: 10px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    nav a { margin-right: 15px; color: #1a73e8; text-decoration: none; font-weight: bold; }
-    .container { max-width: 900px; margin: 20px auto; background: #fff; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    h2 { color: #333; }
-    .product { border-bottom: 1px solid #ddd; padding: 15px 0; }
-    .product:last-child { border: none; }
-    .product a { color: #1a73e8; font-weight: bold; }
-    footer { text-align: center; padding: 20px; background: #eee; margin-top: 30px; font-size: 14px; }
+    /* ====== 基础样式（简洁、响应式） ====== */
+    :root{--accent:#FF9900;--muted:#666;--bg:#f7f7f8;--card:#fff;--maxw:1100px}
+    *{box-sizing:border-box}
+    body{font-family:Inter, "Helvetica Neue", Arial, sans-serif;margin:0;background:var(--bg);color:#222}
+    header{background:#111;color:#fff;padding:22px 16px}
+    .wrap{max-width:var(--maxw);margin:18px auto;padding:0 16px}
+    .logo{font-weight:700;letter-spacing:.4px}
+    nav{margin-top:8px}
+    nav a{color:#ddd;margin-right:14px;text-decoration:none}
+    .hero{background:linear-gradient(90deg,#fff 0, rgba(255,255,255,0.8) 70%);padding:22px;border-radius:8px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 6px 14px rgba(20,20,30,0.05);display:flex;gap:12px}
+    .thumb{flex:0 0 120px;height:120px;background:#eee;border-radius:6px;object-fit:cover}
+    .meta{flex:1}
+    .meta h3{margin:0 0 6px;font-size:16px}
+    .meta p{margin:0 0 10px;color:var(--muted)}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-ghost{background:#fafafa;border:1px solid #eee;color:#333}
+    .category-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{padding:6px 10px;border-radius:999px;background:#fff;border:1px solid #eee;color:#333;font-size:13px}
+    .search{margin-top:14px;display:flex;gap:8px}
+    .search input{flex:1;padding:10px;border-radius:8px;border:1px solid #ddd}
+    footer{margin-top:30px;padding:18px 0;text-align:center;color:var(--muted);font-size:14px}
+    /* product detail modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal.show{display:flex}
+    .modal-card{width:100%;max-width:900px;background:#fff;border-radius:10px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,0.25)}
+    .modal-grid{display:grid;grid-template-columns:300px 1fr;gap:16px}
+    @media(max-width:760px){.modal-grid{grid-template-columns:1fr}}
+    .price{font-size:18px;font-weight:700;color:var(--accent)}
+    .note{font-size:13px;color:var(--muted);margin-top:8px}
   </style>
 </head>
 <body>
   <header>
-    <h1>推荐好物 · 省心购物</h1>
-    <p>精选产品评测与推荐</p>
+    <div class="wrap">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <div class="logo">省心好物 · 精选推荐</div>
+          <nav>
+            <a href="#/">首页</a>
+            <a href="#/category/电子">电子产品</a>
+            <a href="#/category/家居">家居</a>
+            <a href="#/about">关于</a>
+          </nav>
+        </div>
+        <div style="min-width:240px">
+          <form id="searchForm" onsubmit="return false;">
+            <input id="searchInput" placeholder="在本站搜索商品、品牌、关键词" style="padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);width:100%" />
+          </form>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <nav>
-    <a href="#home">首页</a>
-    <a href="#reviews">产品推荐</a>
-    <a href="#disclosure">联盟声明</a>
-    <a href="#privacy">隐私政策</a>
-  </nav>
+  <main class="wrap" id="app">
+    <section class="hero">
+      <h1 style="margin:0">精选好物，真实评测</h1>
+      <p style="margin:6px 0 0;color:var(--muted)">本网站为亚马逊联盟参与会员，在合格购买后可获得佣金。购买请以亚马逊页为准。</p>
+      <div class="category-list" id="categoryList" aria-hidden="false"></div>
+    </section>
 
-  <div class="container" id="home">
-    <h2>热门推荐</h2>
-    <div class="product">
-      <h3>示例产品标题 A</h3>
-      <p>这是一个示例产品描述。你可以在这里放入你的推荐理由或评测内容。</p>
-      <a href="YOUR_AFFILIATE_LINK" target="_blank">前往亚马逊查看商品</a>
+    <section id="listSection">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:18px">
+        <h2 id="listTitle">热门推荐</h2>
+        <div id="countInfo" style="color:var(--muted)"></div>
+      </div>
+
+      <div class="grid" id="productGrid"></div>
+
+      <div style="text-align:center;margin-top:18px">
+        <button id="loadMore" class="btn btn-ghost">加载更多</button>
+      </div>
+    </section>
+
+    <section id="aboutSection" style="display:none;margin-top:18px">
+      <div class="card" style="flex-direction:column">
+        <h2>关于本站</h2>
+        <p class="note">本站为个人运营的商品推荐站，部分链接为亚马逊联盟链接，若你通过本站链接购买商品，本站可能获得佣金。本站坚持独立评测与真实体验，欢迎联系合作或反馈。</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 id="modalTitle">商品名称</h3>
+        <button onclick="closeModal()" class="btn">关闭</button>
+      </div>
+      <div class="modal-grid">
+        <div>
+          <img id="modalImage" src="" alt="" style="width:100%;border-radius:8px;object-fit:cover">
+        </div>
+        <div>
+          <div id="modalDesc">商品详情描述</div>
+          <div class="price" id="modalPrice">$0</div>
+          <div class="note">运费与价格请以亚马逊页面为准。本站不直接销售商品。</div>
+          <div style="margin-top:12px">
+            <a id="modalAffLink" class="btn btn-primary" target="_blank" rel="noopener">前往亚马逊购买</a>
+            <a id="modalAffLinkLocal" class="btn" style="margin-left:8px; background:#f1f1f1">在本地商店查看</a>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="product">
-      <h3>示例产品标题 B</h3>
-      <p>写一些你对这个产品的体验、优缺点等。</p>
-      <a href="YOUR_AFFILIATE_LINK" target="_blank">查看商品</a>
-    </div>
-  </div>
-
-  <div class="container" id="disclosure">
-    <h2>联盟声明（Amazon Affiliate Disclosure）</h2>
-    <p>
-      作为亚马逊联盟成员，本网站会从合格购买中获得佣金。
-      As an Amazon Associate I earn from qualifying purchases.
-    </p>
-  </div>
-
-  <div class="container" id="privacy">
-    <h2>隐私政策</h2>
-    <p>
-      本站可能会使用 Cookies 以提升用户体验。本站链接中部分为联盟链接，若你通过链接购买，本站可能获得佣金。
-      我们不会收集你的个人信息，也不会出售任何用户数据。
-    </p>
   </div>
 
   <footer>
-    © 2025 我的产品推荐站 · All Rights Reserved
+    <div class="wrap">
+      © <span id="year"></span> 省心好物 · 本站为亚马逊联盟成员。<br>
+      <a href="#/privacy">隐私政策</a> · <a href="#/disclosure">联盟声明</a>
+    </div>
   </footer>
+
+  <script>
+    /* ====== 配置区域（请替换为你的信息） ====== */
+    const AFFILIATE_TAG = 'yourtag-20'; // <-- 把这里替换成你的 Amazon Associates tag
+    const DEFAULT_COUNTRY = 'com'; // com / co.uk / de / jp 等
+
+    /* ====== 示例商品数据（可替换成你的批量数据） ====== */
+    const PRODUCTS = [
+      {
+        asin: 'B0EXAMPLE1',
+        title: '入耳式无线蓝牙耳机（示例）',
+        desc: '高保真音质、IPX5 防水、低延迟游戏模式。适合运动与通勤。',
+        img: 'https://m.media-amazon.com/images/I/71Q0E2WNUeL._AC_SL1500_.jpg',
+        price: '49.99',
+        category: '电子'
+      },
+      {
+        asin: 'B0EXAMPLE2',
+        title: '多功能空气炸锅（示例）',
+        desc: '6L 大容量，触摸屏，多种烹饪预设。',
+        img: 'https://m.media-amazon.com/images/I/81Example._AC_SL1500_.jpg',
+        price: '89.99',
+        category: '家居'
+      },
+      {
+        asin: 'B0EXAMPLE3',
+        title: '可折叠户外便携椅（示例）',
+        desc: '轻量铝合金，承重 150kg，户外露营/钓鱼必备。',
+        img: 'https://m.media-amazon.com/images/I/71Example._AC_SL1500_.jpg',
+        price: '39.99',
+        category: '户外'
+      }
+    ];
+
+    /* ====== 简单路由与渲染逻辑 ====== */
+    const state = { products: PRODUCTS.slice(), page: 1, perPage: 6, filter: null, query: '' };
+
+    function buildAffiliateLink(asin){
+      // 生成通用商品链接，建议使用 SiteStripe 取得专属 link 替换
+      return `https://www.amazon.${DEFAULT_COUNTRY}/dp/${asin}?tag=${AFFILIATE_TAG}`;
+    }
+
+    function renderCategories(){
+      const cats = [...new Set(PRODUCTS.map(p=>p.category))];
+      const el = document.getElementById('categoryList');
+      el.innerHTML = '';
+      const all = document.createElement('button');all.className='chip';all.textContent='全部';all.onclick=()=>{state.filter=null;renderList()};el.appendChild(all);
+      cats.forEach(c=>{
+        const btn = document.createElement('button');btn.className='chip';btn.textContent=c;btn.onclick=()=>{state.filter=c;renderList()};el.appendChild(btn);
+      });
+    }
+
+    function renderList(reset=false){
+      if(reset) state.page=1;
+      const grid = document.getElementById('productGrid');
+      let items = state.products.slice();
+      if(state.filter) items = items.filter(p=>p.category===state.filter);
+      if(state.query) items = items.filter(p=> (p.title + ' ' + p.desc).toLowerCase().includes(state.query.toLowerCase()));
+      document.getElementById('countInfo').textContent = `${items.length} 件商品`;
+      const start = 0; // show all for simplicity
+      grid.innerHTML = '';
+      items.forEach(p=>{
+        const card = document.createElement('article');card.className='card';
+        const img = document.createElement('img');img.src=p.img;img.className='thumb';img.alt=p.title;
+        const meta = document.createElement('div');meta.className='meta';
+        const h3 = document.createElement('h3');h3.textContent=p.title;
+        const desc = document.createElement('p');desc.textContent=p.desc;
+        const btn = document.createElement('a');btn.href=buildAffiliateLink(p.asin);btn.target='_blank';btn.rel='noopener';btn.className='btn btn-primary';btn.textContent='前往购买';
+        const more = document.createElement('button');more.className='btn';more.textContent='查看详情';more.style.marginLeft='8px';more.onclick=()=>openModal(p);
+        meta.appendChild(h3);meta.appendChild(desc);meta.appendChild(btn);meta.appendChild(more);
+        card.appendChild(img);card.appendChild(meta);
+        grid.appendChild(card);
+      });
+    }
+
+    function openModal(p){
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalImage').src = p.img;
+      document.getElementById('modalDesc').textContent = p.desc;
+      document.getElementById('modalPrice').textContent = p.price ? ('$' + p.price) : '';
+      const aff = document.getElementById('modalAffLink');
+      aff.href = buildAffiliateLink(p.asin);
+      aff.textContent = '在 Amazon 查看/购买';
+      document.getElementById('modal').classList.add('show');
+    }
+    function closeModal(){document.getElementById('modal').classList.remove('show')}
+
+    /* 搜索功能 */
+    document.getElementById('searchInput').addEventListener('input',(e)=>{state.query=e.target.value;renderList(true)});
+
+    /* 初始化 */
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderCategories();
+    renderList();
+
+    /* ====== 批量导入说明（可选） ======
+      如果你有 CSV/Excel 的商品表（包含 asin,title,desc,img,price,category），
+      可以将其转为 JSON，然后替换 PRODUCTS 内容，或者实现一个小脚本自动生成 HTML 页面。
+
+      示例（Node.js）:
+      const csv = require('csv-parse'); // parse csv -> json -> write file
+    ====== */
+
+    /* ====== 合规说明（请务必遵守） ======
+      1) 在每个展示页面明显位置写明 Affiliate Disclosure（已在 header/ footer 简要写明）。
+      2) 使用官方 SiteStripe 生成的 affiliate 链接为最稳妥方式（包含追踪参数）。
+      3) 尊重亚马逊条款，不要自行删除亚马逊要求的内容或误导用户。 
+    ====== */
+  </script>
 </body>
 </html>
-<div class="product">
-  <img src="https://m.media-amazon.com/images/I/61FdE8rB8hL._SL1500_.jpg" alt="Product Image">
-  <h3>All-around Protection Thumb Brace</h3>
-  <p> GUFMLA。</p>
-  <a href="https://amzn.to/4orVb0Q" target="_blank">👉 去亚马逊查看</a>
-</div>
-<div class="product">
-  <img src="https://m.media-amazon.com/images/I/61CxQlFtykL._AC_SL1500_.jpg" alt="Product Image">
-  <h3>LVHOMLAX 26" Modern Counter Height Bar Stools,Barstools with Arms,Kitchen Island Chairs,Fabric Upholstered Barrel Bar Stools with Backs,Metal Gold...
-</h3>
-  <p> Visit the LVHOMLAX Store。</p>
-  <a href="https://amzn.to/4ifSWvO" target="_blank">👉 去亚马逊查看</a>
-</div>
-<div class="product">
-  <img src="https://m.media-amazon.com/images/I/71DZzozPf2L._AC_SL1500_.jpg" alt="Product Image">
-  <h3>LVHOMLAX 26" Modern Counter Height Bar Stools,Barstools with Arms,Kitchen Island Chairs,Fabric Upholstered Barrel Bar Stools with Backs,Metal Gold...
-</h3>
-  <p> Visit the LVHOMLAX Store。</p>
-  <a href="https://amzn.to/4p3PF5B" target="_blank">👉 去亚马逊查看</a>
-</div>
-<div class="product">
-  <img src="https://m.media-amazon.com/images/I/71JWshkp+WL._AC_SL1500_.jpg" alt="Product Image">
-  <h3>CYT PRIME DESIGN Electric Pre Roll Machine, Cones Rolling Machine for King Size, Portable Pre Rolled Cones Filling Maker, Automatic Cigarette Rolling...
-</h3>
-  <p> Brand: CYT PRIME DESIGN。</p>
-  <a href="https://amzn.to/4io2ViT" target="_blank">👉 去亚马逊查看</a>
-</div>
