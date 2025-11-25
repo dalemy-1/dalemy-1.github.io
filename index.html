@@ -111,27 +111,28 @@
 </footer>
 <script>
 const PRODUCTS = [
-  { asin: "B0FNRMQ6GQ", title: "Product B0FNRMQ6GQ", img: "https://images.amazon.com/images/P/B0FNRMQ6GQ._SL500_.jpg", link: "https://www.amazon.com/dp/B0FNRMQ6GQ/?tag=us1987-20" },
-  { asin: "B0FS7BLXR8", title: "Product B0FS7BLXR8", img: "https://images.amazon.com/images/P/B0FS7BLXR8._SL500_.jpg", link: "https://www.amazon.com/dp/B0FS7BLXR8/?tag=us1987-20" },
-  { asin: "B087TDDZJF", title: "Product B087TDDZJF", img: "https://images.amazon.com/images/P/B087TDDZJF._SL500_.jpg", link: "https://www.amazon.com/dp/B087TDDZJF/?tag=us1987-20" },
-  { asin: "B0FJ1D5C2C", title: "Product B0FJ1D5C2C", img: "https://images.amazon.com/images/P/B0FJ1D5C2C._SL500_.jpg", link: "https://www.amazon.com/dp/B0FJ1D5C2C/?tag=us1987-20" },
-  { asin: "B0DZHCNHHL", title: "Product B0DZHCNHHL", img: "https://images.amazon.com/images/P/B0DZHCNHHL._SL500_.jpg", link: "https://www.amazon.com/dp/B0DZHCNHHL/?tag=us1987-20" },
-  { asin: "B0DX1T4B5F", title: "Product B0DX1T4B5F", img: "https://images.amazon.com/images/P/B0DX1T4B5F._SL500_.jpg", link: "https://www.amazon.com/dp/B0DX1T4B5F/?tag=us1987-20" },
-  { asin: "B0F8H6H3FG", title: "Product B0F8H6H3FG", img: "https://images.amazon.com/images/P/B0F8H6H3FG._SL500_.jpg", link: "https://www.amazon.com/dp/B0F8H6H3FG/?tag=us1987-20" },
-  { asin: "B0DMQVRQ98", title: "Product B0DMQVRQ98", img: "https://images.amazon.com/images/P/B0DMQVRQ98._SL500_.jpg", link: "https://www.amazon.com/dp/B0DMQVRQ98/?tag=us1987-20" },
-  { asin: "B0FL22DW8N", title: "Product B0FL22DW8N", img: "https://images.amazon.com/images/P/B0FL22DW8N._SL500_.jpg", link: "https://www.amazon.com/dp/B0FL22DW8N/?tag=us1987-20" },
-  { asin: "B0FLX45THX", title: "Product B0FLX45THX", img: "https://images.amazon.com/images/P/B0FLX45THX._SL500_.jpg", link: "https://www.amazon.com/dp/B0FLX45THX/?tag=us1987-20" },
-  { asin: "B0F8J3PRJY", title: "Product B0F8J3PRJY", img: "https://images.amazon.com/images/P/B0F8J3PRJY._SL500_.jpg", link: "https://www.amazon.com/dp/B0F8J3PRJY/?tag=us1987-20" },
-  { asin: "B0FLP2JPQ3", title: "Product B0FLP2JPQ3", img: "https://images.amazon.com/images/P/B0FLP2JPQ3._SL500_.jpg", link: "https://www.amazon.com/dp/B0FLP2JPQ3/?tag=us1987-20" },
-  { asin: "B0FNWR8VJV", title: "Product B0FNWR8VJV", img: "https://images.amazon.com/images/P/B0FNWR8VJV._SL500_.jpg", link: "https://www.amazon.com/dp/B0FNWR8VJV/?tag=us1987-20" },
-  { asin: "B0FLPRNHSP", title: "Product B0FLPRNHSP", img: "https://images.amazon.com/images/P/B0FLPRNHSP._SL500_.jpg", link: "https://www.amazon.com/dp/B0FLPRNHSP/?tag=us1987-20" },
-  { asin: "B0FSKTZ6BG", title: "Product B0FSKTZ6BG", img: "https://images.amazon.com/images/P/B0FSKTZ6BG._SL500_.jpg", link: "https://www.amazon.com/dp/B0FSKTZ6BG/?tag=us1987-20" },
-  { asin: "B0FLVXVVLX", title: "Product B0FLVXVVLX", img: "https://images.amazon.com/images/P/B0FLVXVVLX._SL500_.jpg", link: "https://www.amazon.com/dp/B0FLVXVVLX/?tag=us1987-20" },
-  { asin: "B0DPN3J57K", title: "Product B0DPN3J57K", img: "https://images.amazon.com/images/P/B0DPN3J57K._SL500_.jpg", link: "https://www.amazon.com/dp/B0DPN3J57K/?tag=us1987-20" },
-  { asin: "B0FCS3Z42Q", title: "Product B0FCS3Z42Q", img: "https://images.amazon.com/images/P/B0FCS3Z42Q._SL500_.jpg", link: "https://www.amazon.com/dp/B0FCS3Z42Q/?tag=us1987-20" },
-  { asin: "B0FQBR1PV9", title: "Product B0FQBR1PV9", img: "https://images.amazon.com/images/P/B0FQBR1PV9._SL500_.jpg", link: "https://www.amazon.com/dp/B0FQBR1PV9/?tag=us1987-20" },
-  { asin: "B0FLPH2MHP", title: "Product B0FLPH2MHP", img: "https://images.amazon.com/images/P/B0FLPH2MHP._SL500_.jpg", link: "https://www.amazon.com/dp/B0FLPH2MHP/?tag=us1987-20" },
-  { asin: "B0FJG5GK6K", title: "Product B0FJG5GK6K", img: "https://images.amazon.com/images/P/B0FJG5GK6K._SL500_.jpg", link: "https://www.amazon.com/dp/B0FJG5GK6K/?tag=us1987-20" }\n];  
+  { asin: "B0FNRMQ6GQ", title: "Product B0FNRMQ6GQ", image: "https://via.placeholder.com/300?text=B0FNRMQ6GQ", link: "https://www.amazon.com/dp/B0FNRMQ6GQ/?tag=us1987-20" },
+  { asin: "B0FS7BLXR8", title: "Product B0FS7BLXR8", image: "https://via.placeholder.com/300?text=B0FS7BLXR8", link: "https://www.amazon.com/dp/B0FS7BLXR8/?tag=us1987-20" },
+  { asin: "B087TDDZJF", title: "Product B087TDDZJF", image: "https://via.placeholder.com/300?text=B087TDDZJF", link: "https://www.amazon.com/dp/B087TDDZJF/?tag=us1987-20" },
+  { asin: "B0FJ1D5C2C", title: "Product B0FJ1D5C2C", image: "https://via.placeholder.com/300?text=B0FJ1D5C2C", link: "https://www.amazon.com/dp/B0FJ1D5C2C/?tag=us1987-20" },
+  { asin: "B0DZHCNHHL", title: "Product B0DZHCNHHL", image: "https://via.placeholder.com/300?text=B0DZHCNHHL", link: "https://www.amazon.com/dp/B0DZHCNHHL/?tag=us1987-20" },
+  { asin: "B0DX1T4B5F", title: "Product B0DX1T4B5F", image: "https://via.placeholder.com/300?text=B0DX1T4B5F", link: "https://www.amazon.com/dp/B0DX1T4B5F/?tag=us1987-20" },
+  { asin: "B0F8H6H3FG", title: "Product B0F8H6H3FG", image: "https://via.placeholder.com/300?text=B0F8H6H3FG", link: "https://www.amazon.com/dp/B0F8H6H3FG/?tag=us1987-20" },
+  { asin: "B0DMQVRQ98", title: "Product B0DMQVRQ98", image: "https://via.placeholder.com/300?text=B0DMQVRQ98", link: "https://www.amazon.com/dp/B0DMQVRQ98/?tag=us1987-20" },
+  { asin: "B0FL22DW8N", title: "Product B0FL22DW8N", image: "https://via.placeholder.com/300?text=B0FL22DW8N", link: "https://www.amazon.com/dp/B0FL22DW8N/?tag=us1987-20" },
+  { asin: "B0FLX45THX", title: "Product B0FLX45THX", image: "https://via.placeholder.com/300?text=B0FLX45THX", link: "https://www.amazon.com/dp/B0FLX45THX/?tag=us1987-20" },
+  { asin: "B0F8J3PRJY", title: "Product B0F8J3PRJY", image: "https://via.placeholder.com/300?text=B0F8J3PRJY", link: "https://www.amazon.com/dp/B0F8J3PRJY/?tag=us1987-20" },
+  { asin: "B0FLP2JPQ3", title: "Product B0FLP2JPQ3", image: "https://via.placeholder.com/300?text=B0FLP2JPQ3", link: "https://www.amazon.com/dp/B0FLP2JPQ3/?tag=us1987-20" },
+  { asin: "B0FNWR8VJV", title: "Product B0FNWR8VJV", image: "https://via.placeholder.com/300?text=B0FNWR8VJV", link: "https://www.amazon.com/dp/B0FNWR8VJV/?tag=us1987-20" },
+  { asin: "B0FLPRNHSP", title: "Product B0FLPRNHSP", image: "https://via.placeholder.com/300?text=B0FLPRNHSP", link: "https://www.amazon.com/dp/B0FLPRNHSP/?tag=us1987-20" },
+  { asin: "B0FSKTZ6BG", title: "Product B0FSKTZ6BG", image: "https://via.placeholder.com/300?text=B0FSKTZ6BG", link: "https://www.amazon.com/dp/B0FSKTZ6BG/?tag=us1987-20" },
+  { asin: "B0FLVXVVLX", title: "Product B0FLVXVVLX", image: "https://via.placeholder.com/300?text=B0FLVXVVLX", link: "https://www.amazon.com/dp/B0FLVXVVLX/?tag=us1987-20" },
+  { asin: "B0DPN3J57K", title: "Product B0DPN3J57K", image: "https://via.placeholder.com/300?text=B0DPN3J57K", link: "https://www.amazon.com/dp/B0DPN3J57K/?tag=us1987-20" },
+  { asin: "B0FCS3Z42Q", title: "Product B0FCS3Z42Q", image: "https://via.placeholder.com/300?text=B0FCS3Z42Q", link: "https://www.amazon.com/dp/B0FCS3Z42Q/?tag=us1987-20" },
+  { asin: "B0FQBR1PV9", title: "Product B0FQBR1PV9", image: "https://via.placeholder.com/300?text=B0FQBR1PV9", link: "https://www.amazon.com/dp/B0FQBR1PV9/?tag=us1987-20" },
+  { asin: "B0FLPH2MHP", title: "Product B0FLPH2MHP", image: "https://via.placeholder.com/300?text=B0FLPH2MHP", link: "https://www.amazon.com/dp/B0FLPH2MHP/?tag=us1987-20" },
+  { asin: "B0FJG5GK6K", title: "Product B0FJG5GK6K", image: "https://via.placeholder.com/300?text=B0FJG5GK6K", link: "https://www.amazon.com/dp/B0FJG5GK6K/?tag=us1987-20" }
+];
 function renderProducts(list) {
   const grid = document.getElementById("productGrid");
   grid.innerHTML = list.map(p => `
