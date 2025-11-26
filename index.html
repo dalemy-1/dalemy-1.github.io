@@ -8,26 +8,26 @@
         content="Deep Review · Smart Picks – a multi-country Amazon affiliate hub with editorial-style product shortlists and clear Amazon Associates disclosures." />
   <style>
     :root{
-      --bg:#f3f4f6;
-      --bg-soft:#e5e7eb;
-      --ink:#111827;
-      --muted:#6b7280;
+      --bg:#020617;
+      --bg-alt:#020617;
+      --ink:#e5e7eb;
+      --muted:#9ca3af;
       --accent:#f97316;
-      --accent-soft:#fb923c;
-      --border:#e5e7eb;
-      --card:#ffffff;
+      --accent-soft:#fbbf24;
+      --border:#1f2937;
+      --card:rgba(15,23,42,0.82);
+      --glass:rgba(15,23,42,0.78);
       --radius:14px;
-      --maxw:1200px;
+      --maxw:1180px;
       --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
-
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:var(--font);
       background:
-        radial-gradient(circle at top left,rgba(59,130,246,.12),transparent 55%),
-        radial-gradient(circle at bottom right,rgba(251,191,36,.14),transparent 55%),
-        var(--bg);
+        radial-gradient(circle at top left,#1f2937 0,transparent 55%),
+        radial-gradient(circle at bottom right,#0f172a 0,transparent 55%),
+        #020617;
       color:var(--ink);
       -webkit-font-smoothing:antialiased;
       line-height:1.7;
@@ -38,85 +38,85 @@
     header{
       position:sticky;
       top:0;
-      z-index:20;
+      z-index:30;
       backdrop-filter:blur(20px);
-      background:rgba(249,250,251,.92);
-      border-bottom:1px solid rgba(209,213,219,.95);
+      background:linear-gradient(to bottom,rgba(15,23,42,.96),rgba(15,23,42,.9));
+      border-bottom:1px solid rgba(55,65,81,.9);
+      box-shadow:0 16px 40px rgba(15,23,42,.95);
     }
     .wrap{max-width:var(--maxw);margin:0 auto;padding:14px 20px}
     .brand-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{
       font-size:1.35rem;
       font-weight:800;
-      letter-spacing:.04em;
-      background:linear-gradient(to right,#f97316,#fbbf24,#2563eb);
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      background:linear-gradient(to right,#f97316,#facc15,#38bdf8);
       -webkit-background-clip:text;
       color:transparent;
     }
     .tagline{font-size:.86rem;color:var(--muted)}
     nav{font-size:.86rem}
     nav a{
-      margin-left:14px;
+      margin-left:16px;
       color:var(--muted);
       font-weight:600;
-      letter-spacing:.03em;
+      letter-spacing:.08em;
       text-transform:uppercase;
     }
-    nav a:hover{color:var(--ink)}
+    nav a:hover{color:#f9fafb}
     @media(max-width:640px){
       .brand-row{flex-direction:column;align-items:flex-start}
       nav{margin-top:4px}
-      nav a{margin-left:0;margin-right:14px}
+      nav a{margin-left:0;margin-right:16px}
     }
 
     main{max-width:var(--maxw);margin:0 auto;padding:22px 20px 32px}
 
-    /* HERO WITH MAP + SIDEBAR */
+    /* HERO: console panel */
     .hero{
       display:grid;
-      grid-template-columns:3fr 2.3fr;
+      grid-template-columns:3fr 2fr;
       gap:20px;
-      margin-bottom:28px;
+      margin-bottom:26px;
     }
     @media(max-width:960px){.hero{grid-template-columns:1fr}}
-    .hero-left{
+    .hero-main{
       position:relative;
-      border-radius:24px;
+      border-radius:22px;
+      background:radial-gradient(circle at 0% 0%,rgba(248,250,252,.08),transparent 55%),
+                 radial-gradient(circle at 100% 100%,rgba(56,189,248,.15),transparent 55%),
+                 var(--glass);
+      border:1px solid rgba(148,163,184,.35);
+      box-shadow:
+        0 26px 70px rgba(15,23,42,.95),
+        0 0 0 1px rgba(15,23,42,1);
+      padding:22px 22px 20px;
       overflow:hidden;
-      background:
-        radial-gradient(circle at 15% 20%,rgba(59,130,246,.16),transparent 60%),
-        radial-gradient(circle at 80% 75%,rgba(251,191,36,.25),transparent 60%),
-        linear-gradient(135deg,#e5f0ff,#fefce8);
-      border:1px solid rgba(191,219,254,.8);
-      box-shadow:0 20px 45px rgba(148,163,184,.6);
-      padding:22px 22px 80px;
     }
-    .hero-left::before{
-      /* 简单“世界地图”线条效果 */
+    .hero-main::before{
+      /* 模拟控制台网格 */
       content:"";
       position:absolute;
-      inset:8% 6%;
-      border-radius:999px;
-      background-image:
-        radial-gradient(circle at 20% 35%,rgba(148,163,184,.7) 0,transparent 55%),
-        radial-gradient(circle at 55% 35%,rgba(148,163,184,.65) 0,transparent 55%),
-        radial-gradient(circle at 78% 50%,rgba(148,163,184,.6) 0,transparent 52%),
-        radial-gradient(circle at 35% 70%,rgba(148,163,184,.7) 0,transparent 52%),
-        radial-gradient(circle at 70% 78%,rgba(148,163,184,.45) 0,transparent 55%);
-      opacity:.25;
-      mix-blend-mode:multiply;
+      inset:0;
+      background-image:linear-gradient(rgba(31,41,55,.6) 1px,transparent 1px),
+                       linear-gradient(90deg,rgba(31,41,55,.6) 1px,transparent 1px);
+      background-size:26px 26px;
+      opacity:.28;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
     }
     .hero-inner{
       position:relative;
       z-index:1;
-      max-width:520px;
+      max-width:560px;
     }
     .hero-inner h1{
       font-size:1.9rem;
       letter-spacing:.01em;
       margin-bottom:6px;
     }
-    .hero-inner p{font-size:.96rem;color:#374151}
+    .hero-inner p{font-size:.96rem;color:#e5e7eb}
     .hero-meta{margin-top:10px;font-size:.82rem;color:var(--muted)}
     .hero-meta span{margin-right:14px;white-space:nowrap}
     .pill-row{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;font-size:.78rem}
@@ -124,138 +124,170 @@
       padding:5px 11px;
       border-radius:999px;
       border:1px solid rgba(148,163,184,.75);
-      background:rgba(255,255,255,.9);
-      color:#374151;
+      background:rgba(15,23,42,.9);
+      color:#cbd5f5;
     }
     .disclosure-inline{
       margin-top:12px;
       font-size:.8rem;
-      color:#92400e;
-      background:rgba(254,243,199,.95);
+      color:#fed7aa;
+      background:rgba(30,64,175,.55);
       border-radius:10px;
       padding:8px 10px;
-      border:1px dashed rgba(245,158,11,.8);
-      max-width:520px;
+      border:1px dashed rgba(248,250,252,.4);
+      box-shadow:0 0 0 1px rgba(15,23,42,.9);
     }
 
-    .hero-right{
+    .hero-side{
       border-radius:20px;
+      background:radial-gradient(circle at top,rgba(30,64,175,.75),rgba(15,23,42,1));
+      border:1px solid rgba(129,140,248,.65);
+      box-shadow:
+        0 24px 60px rgba(15,23,42,.98),
+        0 0 0 1px rgba(15,23,42,1);
+      padding:18px 18px 16px;
+      color:#e5e7eb;
+    }
+    .hero-side h2{font-size:1.03rem;margin-bottom:4px}
+    .hero-side p{font-size:.9rem;color:#e5e7eb}
+    .hero-side ul{margin:10px 0 0 18px;font-size:.84rem;color:#e5e7eb}
+    .hero-side li{margin-bottom:4px}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(191,219,254,.7);
+      background:rgba(15,23,42,.7);
+      font-size:.76rem;
+      margin-top:6px;
+    }
+
+    /* GRID of countries */
+    .section-heading{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:12px;
+      margin:10px 0 6px;
+    }
+    .section-heading h2{font-size:1.08rem}
+    .section-heading small{font-size:.82rem;color:var(--muted)}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+      margin-top:8px;
+      margin-bottom:26px;
+    }
+    @media(max-width:1024px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:780px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.grid{grid-template-columns:1fr}}
+
+    .country-card{
+      position:relative;
       background:var(--card);
-      border:1px solid var(--border);
-      box-shadow:0 14px 34px rgba(148,163,184,.55);
-      padding:16px 14px 14px;
+      border-radius:var(--radius);
+      border:1px solid rgba(30,64,175,.4);
+      padding:13px 12px 11px;
       display:flex;
       flex-direction:column;
-      max-height:460px;
-    }
-    .hero-right-header{
-      display:flex;
       justify-content:space-between;
-      align-items:flex-start;
-      gap:12px;
-      margin-bottom:10px;
-    }
-    .hero-right-header h2{
-      font-size:1.05rem;
-    }
-    .hero-right-header p{
-      font-size:.85rem;
-      color:var(--muted);
-    }
-    .site-list{
-      margin-top:4px;
-      padding-right:4px;
-      overflow-y:auto;
-      scrollbar-width:thin;
-      scrollbar-color:#cbd5f5 transparent;
-    }
-    .site-list::-webkit-scrollbar{width:6px}
-    .site-list::-webkit-scrollbar-track{background:transparent}
-    .site-list::-webkit-scrollbar-thumb{background:#cbd5f5;border-radius:999px}
-
-    .site-item{
-      border-radius:var(--radius);
-      border:1px solid #e5e7eb;
-      padding:9px 10px 8px;
-      margin-bottom:8px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
       cursor:pointer;
-      transition:border-color .14s ease, box-shadow .14s ease, transform .1s ease;
+      overflow:hidden;
+      transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        transform .12s ease,
+        background .15s ease;
     }
-    .site-item:hover{
-      border-color:rgba(249,115,22,.9);
-      box-shadow:0 10px 28px rgba(148,163,184,.7);
-      transform:translateY(-1px);
+    .country-card::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at top left,rgba(248,250,252,.12),transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+      mix-blend-mode:soft-light;
     }
-    .site-main{
+    .country-card:hover{
+      border-color:rgba(249,115,22,.95);
+      box-shadow:0 18px 44px rgba(15,23,42,.98);
+      transform:translateY(-2px);
+      background:radial-gradient(circle at top,#111827 0,#020617 60%);
+    }
+    .country-head{
+      position:relative;
+      z-index:1;
       display:flex;
+      justify-content:space-between;
       align-items:center;
-      gap:9px;
-      min-width:0;
+      gap:8px;
+      margin-bottom:4px;
     }
-    .flag-circle{
+    .country-left{display:flex;align-items:center;gap:8px;min-width:0}
+    .country-flag{
       width:30px;height:30px;border-radius:999px;
       display:flex;align-items:center;justify-content:center;
       font-size:1.1rem;
-      background:#f9fafb;
-      border:1px solid #e5e7eb;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.7);
       flex-shrink:0;
     }
-    .site-text-main{
-      font-size:.9rem;
-      font-weight:600;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .site-text-sub{
-      font-size:.78rem;color:var(--muted);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .site-meta{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:3px;
-      font-size:.78rem;
-      color:var(--muted);
-      flex-shrink:0;
-    }
-    .site-open{
-      padding:4px 10px;
+    .country-title{font-size:.94rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .country-tag{font-size:.78rem;color:var(--muted);margin-top:1px}
+    .btn-link{
+      padding:5px 10px;
       border-radius:999px;
       border:1px solid rgba(248,181,95,.9);
       font-size:.75rem;
       font-weight:600;
-      letter-spacing:.04em;
+      letter-spacing:.08em;
       text-transform:uppercase;
-      background:linear-gradient(to right,#fef9c3,#ffedd5);
-      color:#b45309;
+      color:#fefce8;
+      background:radial-gradient(circle at top left,#f97316,#b45309);
+      box-shadow:0 0 0 1px rgba(15,23,42,1);
+    }
+    .country-body{
+      position:relative;
+      z-index:1;
+      font-size:.85rem;
+      color:#9ca3af;
+      margin:6px 0 9px;
+      min-height:3.4em;
+    }
+    .country-footer{
+      position:relative;
+      z-index:1;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:.78rem;
+      color:#6b7280;
     }
 
-    /* SECTIONS */
+    /* Info sections */
     .section{
       border-radius:var(--radius);
-      background:var(--card);
-      border:1px solid var(--border);
+      background:var(--glass);
+      border:1px solid rgba(31,41,55,.9);
       padding:16px 14px 14px;
       margin-bottom:18px;
       font-size:.9rem;
-      box-shadow:0 14px 32px rgba(148,163,184,.45);
+      box-shadow:
+        0 20px 52px rgba(15,23,42,.98),
+        0 0 0 1px rgba(15,23,42,1);
     }
     .section h2{font-size:1.02rem;margin-bottom:6px}
-    .section p{margin-bottom:6px;color:#374151}
+    .section p{margin-bottom:6px;color:#e5e7eb}
     .section ul{margin-left:18px;margin-bottom:6px}
     .section li{margin-bottom:4px}
 
     footer{
-      border-top:1px solid #d1d5db;
-      background:#f9fafb;
+      border-top:1px solid rgba(15,23,42,1);
+      background:#020617;
       margin-top:18px;
       font-size:.82rem;
       color:var(--muted);
@@ -270,13 +302,13 @@
       <div>
         <div class="logo">Deep Review · Smart Picks</div>
         <div class="tagline">
-          Multi-country Amazon affiliate hub with editorial-style product shortlists &amp; clear disclosures.
+          Multi-country Amazon affiliate hub · editorial-style product shortlists &amp; clear disclosures.
         </div>
       </div>
       <nav>
         <a href="#sites">Sites</a>
         <a href="#about">About</a>
-        <a href="#disclosure">Affiliate Disclosure</a>
+        <a href="#disclosure">Disclosure</a>
         <a href="#privacy">Privacy</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -285,19 +317,19 @@
 </header>
 
 <main class="wrap">
-  <!-- HERO: MAP + SIDEBAR -->
-  <section class="hero" aria-label="Global overview">
-    <!-- Left: Map-style hero -->
-    <article class="hero-left">
+  <!-- HERO -->
+  <section class="hero" aria-label="Overview">
+    <article class="hero-main">
       <div class="hero-inner">
-        <h1>Deep Review · Smart Picks — global Amazon affiliate hub</h1>
+        <h1>Deep Review · Smart Picks — Amazon affiliate control panel</h1>
         <p>
-          This homepage is a global navigation hub that links to eight country-specific Amazon product short-lists.
-          Each local page focuses on practical, everyday items and presents them in an editorial, magazine-style layout.
+          This homepage acts as a central console for eight country-specific Amazon product short-lists.
+          Each local page focuses on practical, everyday items and presents them in an editorial, magazine-style layout
+          with real ASINs and images.
         </p>
         <div class="hero-meta">
           <span>• 8 Amazon marketplaces</span>
-          <span>• Real ASINs &amp; images</span>
+          <span>• Real /dp/ links</span>
           <span>• Transparent affiliate use</span>
         </div>
         <div class="pill-row">
@@ -308,156 +340,220 @@
           <span class="pill">Car · Office · Sports</span>
         </div>
         <div class="disclosure-inline">
-          As an Amazon Associate we earn from qualifying purchases.
-          This applies to all outbound Amazon links on the country-specific pages linked from this hub.
+          As an Amazon Associate we earn from qualifying purchases. This applies to all outbound Amazon links on the
+          country-specific pages linked from this hub.
         </div>
       </div>
     </article>
 
-    <!-- Right: country sidebar -->
-    <aside class="hero-right" id="sites">
-      <div class="hero-right-header">
-        <div>
-          <h2>Choose your Amazon marketplace</h2>
-          <p>Select a country below to open its dedicated affiliate page with curated product cards.</p>
-        </div>
-      </div>
-      <div class="site-list" aria-label="Country site list">
-        <!-- US -->
-        <a class="site-item" href="/us/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇺🇸</div>
-            <div>
-              <div class="site-text-main">United States · Amazon.com</div>
-              <div class="site-text-sub">Associates ID: us1987-20 · English</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>Electronics · Home · More</span>
-            <span class="site-open">Open /us/</span>
-          </div>
-        </a>
-
-        <!-- UK -->
-        <a class="site-item" href="/uk/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇬🇧</div>
-            <div>
-              <div class="site-text-main">United Kingdom · Amazon.co.uk</div>
-              <div class="site-text-sub">Associates ID: uk0e42-21 · English</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>UK &amp; EU audience</span>
-            <span class="site-open">Open /uk/</span>
-          </div>
-        </a>
-
-        <!-- DE -->
-        <a class="site-item" href="/de/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇩🇪</div>
-            <div>
-              <div class="site-text-main">Germany · Amazon.de</div>
-              <div class="site-text-sub">Associates ID: de0831-21 · English layout</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>Everyday picks</span>
-            <span class="site-open">Open /de/</span>
-          </div>
-        </a>
-
-        <!-- FR -->
-        <a class="site-item" href="/fr/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇫🇷</div>
-            <div>
-              <div class="site-text-main">France · Amazon.fr</div>
-              <div class="site-text-sub">Associates ID: fr0e28-21 · English layout</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>FR marketplace</span>
-            <span class="site-open">Open /fr/</span>
-          </div>
-        </a>
-
-        <!-- IT -->
-        <a class="site-item" href="/it/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇮🇹</div>
-            <div>
-              <div class="site-text-main">Italy · Amazon.it</div>
-              <div class="site-text-sub">Associates ID: alliance19805-21</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>Home · Kitchen · Tech</span>
-            <span class="site-open">Open /it/</span>
-          </div>
-        </a>
-
-        <!-- ES -->
-        <a class="site-item" href="/es/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇪🇸</div>
-            <div>
-              <div class="site-text-main">Spain · Amazon.es</div>
-              <div class="site-text-sub">Associates ID: es072-21</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>ES marketplace</span>
-            <span class="site-open">Open /es/</span>
-          </div>
-        </a>
-
-        <!-- CA -->
-        <a class="site-item" href="/ca/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇨🇦</div>
-            <div>
-              <div class="site-text-main">Canada · Amazon.ca</div>
-              <div class="site-text-sub">Associates ID: alliance0dd-20</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>CA marketplace</span>
-            <span class="site-open">Open /ca/</span>
-          </div>
-        </a>
-
-        <!-- JP -->
-        <a class="site-item" href="/jp/" target="_self">
-          <div class="site-main">
-            <div class="flag-circle">🇯🇵</div>
-            <div>
-              <div class="site-text-main">Japan · Amazon.co.jp</div>
-              <div class="site-text-sub">Associates ID: alliance1987-22</div>
-            </div>
-          </div>
-          <div class="site-meta">
-            <span>JP marketplace</span>
-            <span class="site-open">Open /jp/</span>
-          </div>
-        </a>
+    <aside class="hero-side">
+      <h2>How to use this hub</h2>
+      <p>
+        Think of this page as a global navigation panel. Each tile in the grid below opens a dedicated country site
+        hosted on the same GitHub Pages account.
+      </p>
+      <ul>
+        <li>Select a country tile from the grid.</li>
+        <li>Review the editorial cards for that marketplace.</li>
+        <li>Click “Go to Amazon” buttons to see live prices, availability and delivery on Amazon.</li>
+      </ul>
+      <div class="badge">
+        <span>STATUS:</span>
+        <span style="color:#bbf7d0;">All 8 country pages online</span>
       </div>
     </aside>
+  </section>
+
+  <!-- COUNTRY GRID -->
+  <section id="sites" aria-label="Country sites">
+    <div class="section-heading">
+      <h2>Global site matrix</h2>
+      <small>Each tile opens a dedicated Amazon affiliate page for that marketplace.</small>
+    </div>
+
+    <div class="grid">
+      <!-- US -->
+      <a class="country-card" href="/us/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇺🇸</div>
+            <div>
+              <div class="country-title">United States · Amazon.com</div>
+              <div class="country-tag">Associates ID: us1987-20</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /us/</button>
+        </div>
+        <div class="country-body">
+          Editorial-style shortlist focused on the US market with real Amazon.com ASINs, images and direct /dp/ links.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>Electronics · Home · More</span>
+        </div>
+      </a>
+
+      <!-- UK -->
+      <a class="country-card" href="/uk/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇬🇧</div>
+            <div>
+              <div class="country-title">United Kingdom · Amazon.co.uk</div>
+              <div class="country-tag">Associates ID: uk0e42-21</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /uk/</button>
+        </div>
+        <div class="country-body">
+          UK-focused picks for everyday electronics, home and lifestyle items, presented in a clean grid layout.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>UK &amp; EU audience</span>
+        </div>
+      </a>
+
+      <!-- DE -->
+      <a class="country-card" href="/de/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇩🇪</div>
+            <div>
+              <div class="country-title">Germany · Amazon.de</div>
+              <div class="country-tag">Associates ID: de0831-21</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /de/</button>
+        </div>
+        <div class="country-body">
+          Practical shortlist for the German marketplace, emphasising everyday usability and clear affiliate disclosure.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>DE marketplace</span>
+        </div>
+      </a>
+
+      <!-- FR -->
+      <a class="country-card" href="/fr/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇫🇷</div>
+            <div>
+              <div class="country-title">France · Amazon.fr</div>
+              <div class="country-tag">Associates ID: fr0e28-21</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /fr/</button>
+        </div>
+        <div class="country-body">
+          French marketplace picks presented with English editorial notes and compliant Amazon.fr affiliate links.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>FR marketplace</span>
+        </div>
+      </a>
+
+      <!-- IT -->
+      <a class="country-card" href="/it/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇮🇹</div>
+            <div>
+              <div class="country-title">Italy · Amazon.it</div>
+              <div class="country-tag">Associates ID: alliance19805-21</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /it/</button>
+        </div>
+        <div class="country-body">
+          Compact Amazon.it shortlist for everyday home, kitchen and tech items with consistent editorial summaries.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>IT marketplace</span>
+        </div>
+      </a>
+
+      <!-- ES -->
+      <a class="country-card" href="/es/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇪🇸</div>
+            <div>
+              <div class="country-title">Spain · Amazon.es</div>
+              <div class="country-tag">Associates ID: es072-21</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /es/</button>
+        </div>
+        <div class="country-body">
+          Spanish marketplace hub with real ASINs, imagery and short buying notes for everyday categories.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>ES marketplace</span>
+        </div>
+      </a>
+
+      <!-- CA -->
+      <a class="country-card" href="/ca/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇨🇦</div>
+            <div>
+              <div class="country-title">Canada · Amazon.ca</div>
+              <div class="country-tag">Associates ID: alliance0dd-20</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /ca/</button>
+        </div>
+        <div class="country-body">
+          Amazon.ca shortlists aimed at Canadian households, with direct /dp/ links and affiliate tagging.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>CA marketplace</span>
+        </div>
+      </a>
+
+      <!-- JP -->
+      <a class="country-card" href="/jp/" target="_self">
+        <div class="country-head">
+          <div class="country-left">
+            <div class="country-flag">🇯🇵</div>
+            <div>
+              <div class="country-title">Japan · Amazon.co.jp</div>
+              <div class="country-tag">Associates ID: alliance1987-22</div>
+            </div>
+          </div>
+          <button class="btn-link">Open /jp/</button>
+        </div>
+        <div class="country-body">
+          Japan-focused Amazon.co.jp shortlist with real ASINs, images and a coherent editorial card layout.
+        </div>
+        <div class="country-footer">
+          <span>Language: English</span>
+          <span>JP marketplace</span>
+        </div>
+      </a>
+    </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="section">
     <h2>About Deep Review · Smart Picks</h2>
     <p>
-      Deep Review · Smart Picks is an independently operated content project.
-      Each country page is a static, editorial-style example of how Amazon affiliate sites can present curated product
-      selections with clear disclosures and helpful summaries.
+      Deep Review · Smart Picks is an independently operated content project. Each country page is a static,
+      editorial-style example of how Amazon affiliate sites can present curated product selections with clear
+      disclosures and helpful summaries.
     </p>
     <p>
-      We are not affiliated with Amazon, Inc. or any specific brand. All product information is sourced from
-      publicly available Amazon listings and is provided for informational purposes only. Always check the live
-      product pages on Amazon for the most accurate, up-to-date details, prices and delivery options.
+      We are not affiliated with Amazon, Inc. or any specific brand. All product information is sourced from publicly
+      available Amazon listings and is provided for informational purposes only. Always check the live product pages
+      on Amazon for the most accurate, up-to-date details, prices and delivery options.
     </p>
   </section>
 
@@ -474,7 +570,7 @@
       This does not affect your purchase price and does not influence the basic editorial structure of the site
       or which general product categories are included.
     </p>
-    <p style="font-size:.85rem;color:#374151;">
+    <p style="font-size:.85rem;color:#e5e7eb;">
       As an Amazon Associate we earn from qualifying purchases.
     </p>
   </section>
