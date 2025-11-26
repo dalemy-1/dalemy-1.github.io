@@ -186,6 +186,7 @@
     @media(max-width:520px){.grid{grid-template-columns:1fr}}
 
     .country-card{
+      position:relative;
       background:var(--card);
       border-radius:var(--radius);
       border:1px solid var(--border);
@@ -195,19 +196,41 @@
       flex-direction:column;
       cursor:pointer;
       transition:border-color .15s ease, box-shadow .15s ease, transform .12s ease;
+      isolation:isolate;
     }
+    /* 虚化国旗背景基础层 */
+    .country-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top left,#e5e7eb,#f9fafb);
+      opacity:.18;
+      filter:blur(4px);
+      transform:scale(1.05);
+      z-index:0;
+    }
+    /* 前景内容保持在上方 */
+    .country-banner,
+    .country-body,
+    .country-footer{
+      position:relative;
+      z-index:1;
+      backdrop-filter:blur(0.5px);
+    }
+
     .country-card:hover{
       border-color:rgba(249,115,22,.9);
       box-shadow:0 18px 36px rgba(148,163,184,.55);
       transform:translateY(-2px);
     }
+
     .country-banner{
       padding:10px 12px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      background:linear-gradient(135deg,#eff6ff,#fef3c7);
+      background:rgba(249,250,251,.85);
       border-bottom:1px solid #e5e7eb;
     }
     .country-flag{
@@ -240,14 +263,14 @@
       padding:4px 9px;
       border-radius:999px;
       border:1px solid rgba(148,163,184,.9);
-      background:rgba(255,255,255,.9);
+      background:rgba(255,255,255,.92);
       color:#4b5563;
       white-space:nowrap;
     }
     .country-body{
       padding:10px 12px 9px;
       font-size:.86rem;
-      color:#4b5563;
+      color:#374151;
       min-height:3.4em;
     }
     .country-footer{
@@ -271,7 +294,35 @@
       text-transform:uppercase;
     }
 
-    /* CONTENT SECTIONS */
+    /* 各国家卡片的“国旗”背景（虚化渐变） */
+    .card-us::before{
+      background:linear-gradient(135deg,#b91c1c 0,#ffffff 40%,#1d4ed8 100%);
+    }
+    .card-uk::before{
+      background:linear-gradient(135deg,#1d4ed8 0,#ffffff 45%,#b91c1c 100%);
+    }
+    .card-de::before{
+      background:linear-gradient(180deg,#111827 0 33%,#b91c1c 33% 66%,#f59e0b 66% 100%);
+    }
+    .card-fr::before{
+      background:linear-gradient(90deg,#1d4ed8 0 33%,#ffffff 33% 66%,#b91c1c 66% 100%);
+    }
+    .card-it::before{
+      background:linear-gradient(90deg,#16a34a 0 33%,#ffffff 33% 66%,#b91c1c 66% 100%);
+    }
+    .card-es::before{
+      background:linear-gradient(180deg,#b91c1c 0 30%,#facc15 30% 70%,#b91c1c 70% 100%);
+    }
+    .card-ca::before{
+      background:linear-gradient(90deg,#b91c1c 0 25%,#ffffff 25% 75%,#b91c1c 75% 100%);
+    }
+    .card-jp::before{
+      background:
+        radial-gradient(circle at center,#dc2626 0 30%,transparent 35%),
+        #ffffff;
+    }
+
+    /* 内容区块 */
     .section{
       border-radius:var(--radius);
       background:var(--card);
@@ -373,7 +424,7 @@
 
     <div class="grid">
       <!-- US -->
-      <a class="country-card" href="/us/" target="_self">
+      <a class="country-card card-us" href="/us/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇺🇸</div>
@@ -395,7 +446,7 @@
       </a>
 
       <!-- UK -->
-      <a class="country-card" href="/uk/" target="_self">
+      <a class="country-card card-uk" href="/uk/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇬🇧</div>
@@ -417,7 +468,7 @@
       </a>
 
       <!-- DE -->
-      <a class="country-card" href="/de/" target="_self">
+      <a class="country-card card-de" href="/de/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇩🇪</div>
@@ -439,7 +490,7 @@
       </a>
 
       <!-- FR -->
-      <a class="country-card" href="/fr/" target="_self">
+      <a class="country-card card-fr" href="/fr/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇫🇷</div>
@@ -461,7 +512,7 @@
       </a>
 
       <!-- IT -->
-      <a class="country-card" href="/it/" target="_self">
+      <a class="country-card card-it" href="/it/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇮🇹</div>
@@ -483,7 +534,7 @@
       </a>
 
       <!-- ES -->
-      <a class="country-card" href="/es/" target="_self">
+      <a class="country-card card-es" href="/es/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇪🇸</div>
@@ -505,7 +556,7 @@
       </a>
 
       <!-- CA -->
-      <a class="country-card" href="/ca/" target="_self">
+      <a class="country-card card-ca" href="/ca/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇨🇦</div>
@@ -527,7 +578,7 @@
       </a>
 
       <!-- JP -->
-      <a class="country-card" href="/jp/" target="_self">
+      <a class="country-card card-jp" href="/jp/" target="_self">
         <div class="country-banner">
           <div style="display:flex;align-items:center;gap:9px;">
             <div class="country-flag">🇯🇵</div>
